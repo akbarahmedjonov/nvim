@@ -8,7 +8,6 @@ local set = vim.keymap.set
 set("n", "<leader>cd", "<CMD>Oil<CR>", { desc = "Open parent directory" })
 set("n", "<leader>ff", "<CMD>Telescope fd<CR>", { desc = "Telescope find files" })
 set("n", "<leader>fb", "<CMD>Telescope buffers<CR>", { desc = "Telescope find buffers" })
-set("n", "<leader>fb", "<CMD>Telescope buffers<CR>", { desc = "Telescope find buffers" })
 set("n", "<leader>fg", "<CMD>Telescope live_grep<CR>", { desc = "Telescope grep strings" })
 set("n", "<leader>u", "<CMD>Undotree<CR>", { desc = "Toggle undotree" })
 
@@ -22,12 +21,6 @@ set("n", "<C-k>", "<C-w>k", { desc = "Go to upper window" })
 set("n", "<C-l>", "<C-w>l", { desc = "Go to right window" })
 
 set("n", "<leader>cx", "<C-w>q", { desc = "Close current split window" })
-
-set("n", "<S-h>", "<CMD>BufferLineCyclePrev<CR>", { desc = "Go to previous tab" })
-set("n", "<S-l>", "<CMD>BufferLineCycleNext<CR>", { desc = "Go to next tab" })
-
--- Native bufferline quick letter-picking jump mode
-set("n", "<leader>bp", "<CMD>BufferLinePick<CR>", { desc = "Pick tab by visual letter" })
 
 -- Close current buffer/tab cleanly
 set("n", "<leader>bd", "<CMD>bdelete<CR>", { desc = "Close current tab" })
