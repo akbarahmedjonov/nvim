@@ -9,7 +9,7 @@ end
 
 vim.pack.add(github({
 	"neovim/nvim-lspconfig",
-	"ellisonleao/gruvbox.nvim",
+	"folke/tokyonight.nvim",
 	"stevearc/oil.nvim",
 	"stevearc/conform.nvim",
 	"nvim-tree/nvim-web-devicons",
@@ -34,6 +34,7 @@ require("conform").setup({
 		cpp = { "clang_format" },
 		rust = { "rustfmt" },
 		lua = { "stylua" },
+		nix = { "alejandra" },
 	},
 	format_on_save = {
 		timeout_ms = 500,
@@ -42,12 +43,23 @@ require("conform").setup({
 })
 
 -- Theme
-require("gruvbox").setup({
-	transparent_mode = true,
+require("lualine").setup({})
+require("tokyonight").setup({
+	transparent = true,
 })
-vim.cmd("colorscheme gruvbox")
+vim.cmd("colorscheme tokyonight")
 
-require("oil").setup()
+require("oil").setup({
+	view_options = {
+		show_hidden = true,
+		is_hidden_file = function(name, bufnr)
+			return vim.startswith(name, ".")
+		end,
+		is_always_hidden = function(name, bufnr)
+			return false
+		end,
+	},
+})
 require("nvim-highlight-colors").setup({})
 
 -- Lsp and completions
@@ -81,7 +93,7 @@ cmp.setup({
 
 -- 4. LSP and Server Configuration
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
-local servers = { "pyright", "ts_ls", "lua_ls", "clangd", "rust_analyzer", "html", "cssls" }
+local servers = { "pyright", "ts_ls", "lua_ls", "clangd", "rust_analyzer", "html", "cssls", "nil_ls" }
 
 for _, server in ipairs(servers) do
 	vim.lsp.config(server, {
