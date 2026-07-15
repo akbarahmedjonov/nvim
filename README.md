@@ -10,7 +10,7 @@ Select the command corresponding to your Linux distribution:
 
 ### 🏔️ Arch Linux
 ```bash
-curl -sSL [https://raw.githubusercontent.com/akbarahmedjonov/scripts/main/install.sh](https://raw.githubusercontent.com/akbarahmedjonov/scripts/main/install.sh) | bash
+curl -sSL https://raw.githubusercontent.com/akbarahmedjonov/scripts/main/install.sh | bash
 ```
 
 📦 Declarative NixOS Setup (Alternative)
@@ -28,7 +28,6 @@ environment.systemPackages = with pkgs; [
   fd
   unzip
   
-  # LSPs, Linters & Formatters
   pyright
   ruff
   lua-language-server
