@@ -1,4 +1,3 @@
--- Main plugins
 local function github(plugins)
 	local result = {}
 	for _, p in ipairs(plugins) do
@@ -9,7 +8,7 @@ end
 
 vim.pack.add(github({
 	"neovim/nvim-lspconfig",
-	"folke/tokyonight.nvim",
+	"sainnhe/gruvbox-material",
 	"stevearc/oil.nvim",
 	"stevearc/conform.nvim",
 	"nvim-tree/nvim-web-devicons",
@@ -44,10 +43,8 @@ require("conform").setup({
 
 -- Theme
 require("lualine").setup({})
-require("tokyonight").setup({
-	transparent = true,
-})
-vim.cmd("colorscheme tokyonight")
+vim.cmd("colorscheme gruvbox-material")
+vim.g.gruvbox_material_enable_italic = true
 
 require("oil").setup({
 	view_options = {
@@ -62,7 +59,6 @@ require("oil").setup({
 })
 require("nvim-highlight-colors").setup({})
 
--- Lsp and completions
 local cmp = require("cmp")
 local luasnip = require("luasnip")
 
@@ -75,23 +71,22 @@ cmp.setup({
 	mapping = cmp.mapping.preset.insert({
 		["<C-b>"] = cmp.mapping.scroll_docs(-4),
 		["<C-f>"] = cmp.mapping.scroll_docs(4),
-		["<C-Space>"] = cmp.mapping.complete(), -- Manually trigger completion menu
-		["<CR>"] = cmp.mapping.confirm({ select = true }), -- Confirm suggestion
-		["<Tab>"] = cmp.mapping.select_next_item(), -- Cycle down menu
-		["<S-Tab>"] = cmp.mapping.select_prev_item(), -- Cycle up menu
+		["<C-Space>"] = cmp.mapping.complete(),
+		["<CR>"] = cmp.mapping.confirm({ select = true }),
+		["<Tab>"] = cmp.mapping.select_next_item(),
+		["<S-Tab>"] = cmp.mapping.select_prev_item(),
 	}),
 	sources = cmp.config.sources({
-		{ name = "nvim_lsp" }, -- Pull autocomplete suggestions from language servers
-		{ name = "luasnip" }, -- Pull autocomplete suggestions from snippets
-		{ name = "path" }, -- directories + files
+		{ name = "nvim_lsp" },
+		{ name = "luasnip" },
+		{ name = "path" },
 		{ name = "buffer" },
 	}),
 	completion = {
-		keyword_length = 1, -- start suggesting after 1 character
+		keyword_length = 1,
 	},
 })
 
--- 4. LSP and Server Configuration
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 local servers = { "pyright", "ts_ls", "lua_ls", "clangd", "rust_analyzer", "html", "cssls", "nil_ls" }
 
@@ -102,7 +97,6 @@ for _, server in ipairs(servers) do
 	vim.lsp.enable(server)
 end
 
--- Add handy shortcuts that trigger only when an LSP connects to a file
 vim.api.nvim_create_autocmd("LspAttach", {
 	callback = function(ev)
 		local opts = { buffer = ev.buf }
