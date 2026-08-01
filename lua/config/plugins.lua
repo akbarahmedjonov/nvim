@@ -8,7 +8,7 @@ end
 
 vim.pack.add(github({
 	"neovim/nvim-lspconfig",
-	"sainnhe/gruvbox-material",
+	"catppuccin/nvim",
 	"stevearc/oil.nvim",
 	"stevearc/conform.nvim",
 	"nvim-tree/nvim-web-devicons",
@@ -21,14 +21,16 @@ vim.pack.add(github({
 	"brenoprata10/nvim-highlight-colors",
 	"nvim-telescope/telescope.nvim",
 	"nvim-lua/plenary.nvim",
+	"goolord/alpha-nvim",
 }))
+
+local startify = require("alpha.themes.startify")
+startify.file_icons.provider = "devicons"
+require("alpha").setup(startify.config)
 
 require("conform").setup({
 	formatters_by_ft = {
 		python = { "ruff_format" },
-		toml = { "taplo" },
-		html = { "prettier" },
-		css = { "prettier" },
 		c = { "clang_format" },
 		cpp = { "clang_format" },
 		rust = { "rustfmt" },
@@ -41,10 +43,11 @@ require("conform").setup({
 	},
 })
 
--- Theme
 require("lualine").setup({})
-vim.cmd("colorscheme gruvbox-material")
-vim.g.gruvbox_material_enable_italic = true
+require("catppuccin").setup({
+	transparent_background = true,
+})
+vim.cmd.colorscheme("catppuccin-mocha")
 
 require("oil").setup({
 	view_options = {
@@ -88,7 +91,7 @@ cmp.setup({
 })
 
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
-local servers = { "pyright", "ts_ls", "lua_ls", "clangd", "rust_analyzer", "html", "cssls", "nil_ls" }
+local servers = { "pyright", "lua_ls", "clangd", "rust_analyzer", "nil_ls" }
 
 for _, server in ipairs(servers) do
 	vim.lsp.config(server, {
