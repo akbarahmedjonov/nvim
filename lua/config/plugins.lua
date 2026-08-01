@@ -44,9 +44,6 @@ require("conform").setup({
 })
 
 require("lualine").setup({})
-require("catppuccin").setup({
-	transparent_background = true,
-})
 vim.cmd.colorscheme("catppuccin-mocha")
 
 require("oil").setup({
