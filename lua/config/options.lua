@@ -1,40 +1,35 @@
 vim.g.mapleader = " "
 
-local options = {
-	number = true,
-	relativenumber = true,
-	cursorline = true,
-	clipboard = "unnamedplus",
-	mouse = "a",
-	ignorecase = true,
-	smartcase = true,
-	splitright = true,
-	splitbelow = true,
-	signcolumn = "yes",
-	scrolloff = 8,
-	swapfile = false,
-	wrap = true,
-	expandtab = true,
-	cindent = true,
-	smarttab = true,
-	smartindent = true,
-	shiftwidth = 4,
-	tabstop = 4,
-	hlsearch = false,
-	incsearch = true,
-	termguicolors = true,
-	updatetime = 50,
-	smoothscroll = true,
-	backup = false,
-	undodir = os.getenv("HOME") .. "/.vim/undodir",
-	undofile = true,
-}
+local opt = vim.opt
 
-for option, value in pairs(options) do
-	vim.opt[option] = value
-end
+opt.number = true
+opt.relativenumber = true
+opt.cursorline = true
+opt.clipboard = "unnamedplus"
+opt.mouse = "a"
+opt.ignorecase = true
+opt.smartcase = true
+opt.splitright = true
+opt.splitbelow = true
+opt.signcolumn = "yes"
+opt.scrolloff = 8
+opt.swapfile = false
+opt.wrap = true
+opt.expandtab = true
+opt.cindent = true
+opt.smarttab = true
+opt.smartindent = true
+opt.shiftwidth = 4
+opt.tabstop = 4
+opt.hlsearch = false
+opt.incsearch = true
+opt.termguicolors = true
+opt.updatetime = 50
+opt.smoothscroll = true
+opt.backup = false
+opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
+opt.undofile = true
 
--- Show errors right away
 vim.diagnostic.config({ virtual_text = true })
 
 vim.cmd("packadd nvim.undotree")
