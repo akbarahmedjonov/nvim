@@ -14,8 +14,10 @@ vim.pack.add(github({
 	"nvim-tree/nvim-web-devicons",
 	"hrsh7th/nvim-cmp",
 	"hrsh7th/cmp-path",
+	"hrsh7th/cmp-buffer",
 	"hrsh7th/cmp-nvim-lsp",
 	"L3MON4D3/LuaSnip",
+	"rafamadriz/friendly-snippets",
 	"saadparwaiz1/cmp_luasnip",
 	"brenoprata10/nvim-highlight-colors",
 	"nvim-telescope/telescope.nvim",
@@ -29,11 +31,12 @@ require("conform").setup({
 		cpp = { "clang_format" },
 		rust = { "rustfmt" },
 		lua = { "stylua" },
-		js = { "prettier" },
-		jsx = { "prettier" },
+		javascript = { "prettier" },
+		javascriptreact = { "prettier" },
+		typescript = { "prettier" },
+		typescriptreact = { "prettier" },
 		html = { "prettier" },
 		css = { "prettier" },
-		tsx = { "prettier" },
 		nix = { "alejandra" },
 	},
 	format_on_save = {
@@ -65,6 +68,8 @@ require("nvim-highlight-colors").setup({})
 local cmp = require("cmp")
 local luasnip = require("luasnip")
 
+require("luasnip.loaders.from_vscode").lazy_load()
+
 cmp.setup({
 	snippet = {
 		expand = function(args)
@@ -76,8 +81,24 @@ cmp.setup({
 		["<C-f>"] = cmp.mapping.scroll_docs(4),
 		["<C-Space>"] = cmp.mapping.complete(),
 		["<CR>"] = cmp.mapping.confirm({ select = true }),
-		["<Tab>"] = cmp.mapping.select_next_item(),
-		["<S-Tab>"] = cmp.mapping.select_prev_item(),
+		["<Tab>"] = cmp.mapping(function(fallback)
+			if cmp.visible() then
+				cmp.select_next_item()
+			elseif luasnip.expand_or_jumpable() then
+				luasnip.expand_or_jump()
+			else
+				fallback()
+			end
+		end, { "i", "s" }),
+		["<S-Tab>"] = cmp.mapping(function(fallback)
+			if cmp.visible() then
+				cmp.select_prev_item()
+			elseif luasnip.jumpable(-1) then
+				luasnip.jump(-1)
+			else
+				fallback()
+			end
+		end, { "i", "s" }),
 	}),
 	sources = cmp.config.sources({
 		{ name = "nvim_lsp" },
@@ -91,7 +112,10 @@ cmp.setup({
 })
 
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
-local servers = { "pyright", "lua_ls", "clangd", "rust_analyzer", "ts_ls", "html", "css_ls", "nil_ls" }
+
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+
+local servers = { "pyright", "lua_ls", "clangd", "rust_analyzer", "ts_ls", "html", "cssls", "nil_ls" }
 
 for _, server in ipairs(servers) do
 	vim.lsp.config(server, {
