@@ -8,7 +8,7 @@ end
 
 vim.pack.add(github({
 	"neovim/nvim-lspconfig",
-	"catppuccin/nvim",
+	"rose-pine/neovim",
 	"stevearc/oil.nvim",
 	"stevearc/conform.nvim",
 	"nvim-tree/nvim-web-devicons",
@@ -17,16 +17,10 @@ vim.pack.add(github({
 	"hrsh7th/cmp-nvim-lsp",
 	"L3MON4D3/LuaSnip",
 	"saadparwaiz1/cmp_luasnip",
-	"nvim-lualine/lualine.nvim",
 	"brenoprata10/nvim-highlight-colors",
 	"nvim-telescope/telescope.nvim",
 	"nvim-lua/plenary.nvim",
-	"goolord/alpha-nvim",
 }))
-
-local startify = require("alpha.themes.startify")
-startify.file_icons.provider = "devicons"
-require("alpha").setup(startify.config)
 
 require("conform").setup({
 	formatters_by_ft = {
@@ -35,6 +29,11 @@ require("conform").setup({
 		cpp = { "clang_format" },
 		rust = { "rustfmt" },
 		lua = { "stylua" },
+		js = { "prettier" },
+		jsx = { "prettier" },
+		html = { "prettier" },
+		css = { "prettier" },
+		tsx = { "prettier" },
 		nix = { "alejandra" },
 	},
 	format_on_save = {
@@ -43,8 +42,12 @@ require("conform").setup({
 	},
 })
 
-require("lualine").setup({})
-vim.cmd.colorscheme("catppuccin-mocha")
+vim.cmd("hi Directory guibg=NONE")
+vim.cmd("hi SignColumn guibg=NONE")
+vim.api.nvim_set_hl(0, "LineNr", { bg = "none" })
+vim.cmd.colorscheme("rose-pine")
+vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
 
 require("oil").setup({
 	view_options = {
@@ -88,7 +91,7 @@ cmp.setup({
 })
 
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
-local servers = { "pyright", "lua_ls", "clangd", "rust_analyzer", "nil_ls" }
+local servers = { "pyright", "lua_ls", "clangd", "rust_analyzer", "ts_ls", "html", "css_ls", "nil_ls" }
 
 for _, server in ipairs(servers) do
 	vim.lsp.config(server, {
