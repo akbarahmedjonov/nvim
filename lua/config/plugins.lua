@@ -8,8 +8,7 @@ end
 
 vim.pack.add(github({
 	"neovim/nvim-lspconfig",
-	"sainnhe/gruvbox-material",
-	"nvim-lualine/lualine.nvim",
+	"rose-pine/neovim",
 	"stevearc/oil.nvim",
 	"stevearc/conform.nvim",
 	"nvim-tree/nvim-web-devicons",
@@ -46,11 +45,10 @@ require("conform").setup({
 	},
 })
 
-require("lualine").setup({})
 vim.cmd("hi Directory guibg=NONE")
 vim.cmd("hi SignColumn guibg=NONE")
 vim.api.nvim_set_hl(0, "LineNr", { bg = "none" })
-vim.cmd.colorscheme("gruvbox-material")
+vim.cmd.colorscheme("rose-pine")
 vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
 vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
 
