@@ -4,7 +4,6 @@ local opt = vim.opt
 
 opt.number = true
 opt.relativenumber = true
-opt.cursorline = true
 opt.clipboard = "unnamedplus"
 opt.mouse = "a"
 opt.ignorecase = true
