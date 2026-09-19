@@ -22,6 +22,8 @@ vim.pack.add(github({
 	"brenoprata10/nvim-highlight-colors",
 	"nvim-telescope/telescope.nvim",
 	"nvim-lua/plenary.nvim",
+	"nvim-lualine/lualine.nvim",
+	"blazkowolf/gruber-darker.nvim",
 }))
 
 require("conform").setup({
@@ -45,10 +47,11 @@ require("conform").setup({
 	},
 })
 
+--require("lualine").setup({})
 vim.cmd("hi Directory guibg=NONE")
 vim.cmd("hi SignColumn guibg=NONE")
 vim.api.nvim_set_hl(0, "LineNr", { bg = "none" })
-vim.cmd.colorscheme("catppuccin-mocha")
+vim.cmd.colorscheme("gruber-darker")
 vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
 vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
 

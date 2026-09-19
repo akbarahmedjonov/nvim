@@ -28,6 +28,14 @@
       "rev": "a5a73e586521fe5c12d751ad81a0db67649a94ed",
       "src": "https://github.com/rafamadriz/friendly-snippets"
     },
+    "gruber-darker.nvim": {
+      "rev": "50fa4e583099729fcaaadc73a5afb74f7a91a625",
+      "src": "https://github.com/blazkowolf/gruber-darker.nvim"
+    },
+    "lualine.nvim": {
+      "rev": "221ce6b2d999187044529f49da6554a92f740a96",
+      "src": "https://github.com/nvim-lualine/lualine.nvim"
+    },
     "mason-lspconfig.nvim": {
       "rev": "b5576cd62899a1a478d0e67ef3d378ee55dba82d",
       "src": "https://github.com/williamboman/mason-lspconfig.nvim"
