@@ -8,7 +8,6 @@ end
 
 vim.pack.add(github({
 	"neovim/nvim-lspconfig",
-	"catppuccin/nvim",
 	"stevearc/oil.nvim",
 	"stevearc/conform.nvim",
 	"nvim-tree/nvim-web-devicons",
