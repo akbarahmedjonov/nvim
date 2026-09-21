@@ -21,8 +21,7 @@ vim.pack.add(github({
 	"brenoprata10/nvim-highlight-colors",
 	"nvim-telescope/telescope.nvim",
 	"nvim-lua/plenary.nvim",
-	"nvim-lualine/lualine.nvim",
-	"blazkowolf/gruber-darker.nvim",
+	"rose-pine/neovim",
 }))
 
 require("conform").setup({
@@ -50,7 +49,7 @@ require("conform").setup({
 vim.cmd("hi Directory guibg=NONE")
 vim.cmd("hi SignColumn guibg=NONE")
 vim.api.nvim_set_hl(0, "LineNr", { bg = "none" })
-vim.cmd.colorscheme("gruber-darker")
+vim.cmd.colorscheme("rose-pine")
 vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
 vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
 
@@ -117,7 +116,7 @@ local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-local servers = { "pyright", "lua_ls", "clangd", "rust_analyzer", "ts_ls", "html", "cssls", "nil_ls" }
+local servers = { "basedpyright", "lua_ls", "clangd", "rust_analyzer", "ts_ls", "html", "cssls", "nil_ls" }
 
 for _, server in ipairs(servers) do
 	vim.lsp.config(server, {

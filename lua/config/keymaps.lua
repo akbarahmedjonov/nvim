@@ -8,6 +8,7 @@ set("n", "<leader>ff", "<CMD>Telescope fd<CR>", { desc = "Telescope find files" 
 set("n", "<leader>fb", "<CMD>Telescope buffers<CR>", { desc = "Telescope find buffers" })
 set("n", "<leader>fg", "<CMD>Telescope live_grep<CR>", { desc = "Telescope grep strings" })
 set("n", "<leader>fr", "<CMD>Telescope oldfiles<CR>", { desc = "Telescope recent files" })
+set("n", "<leader>ft", "<CMD>Telescope colorscheme<CR>", { desc = "Telescope colorschemes" })
 
 set("n", "<leader>fc", function()
 	require("telescope.builtin").find_files({
