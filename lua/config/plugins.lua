@@ -21,8 +21,7 @@ vim.pack.add(github({
 	"brenoprata10/nvim-highlight-colors",
 	"nvim-telescope/telescope.nvim",
 	"nvim-lua/plenary.nvim",
-	"folke/tokyonight.nvim",
-	"nvim-lualine/lualine.nvim",
+	"rose-pine/neovim",
 }))
 
 require("conform").setup({
@@ -46,11 +45,10 @@ require("conform").setup({
 	},
 })
 
-require("lualine").setup({})
 vim.cmd("hi Directory guibg=NONE")
 vim.cmd("hi SignColumn guibg=NONE")
 vim.api.nvim_set_hl(0, "LineNr", { bg = "none" })
-vim.cmd.colorscheme("tokyonight-night")
+vim.cmd.colorscheme("rose-pine")
 vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
 vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
 
