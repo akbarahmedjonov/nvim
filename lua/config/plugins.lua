@@ -8,9 +8,7 @@ end
 
 vim.pack.add(github({
 	"neovim/nvim-lspconfig",
-	"stevearc/oil.nvim",
 	"stevearc/conform.nvim",
-	"nvim-tree/nvim-web-devicons",
 	"hrsh7th/nvim-cmp",
 	"hrsh7th/cmp-path",
 	"hrsh7th/cmp-buffer",
@@ -21,7 +19,9 @@ vim.pack.add(github({
 	"brenoprata10/nvim-highlight-colors",
 	"nvim-telescope/telescope.nvim",
 	"nvim-lua/plenary.nvim",
-	"rose-pine/neovim",
+	"stevearc/oil.nvim",
+	"nvim-tree/nvim-web-devicons",
+	"blazkowolf/gruber-darker.nvim",
 }))
 
 require("conform").setup({
@@ -29,14 +29,7 @@ require("conform").setup({
 		python = { "ruff_format" },
 		c = { "clang_format" },
 		cpp = { "clang_format" },
-		rust = { "rustfmt" },
 		lua = { "stylua" },
-		javascript = { "prettier" },
-		javascriptreact = { "prettier" },
-		typescript = { "prettier" },
-		typescriptreact = { "prettier" },
-		html = { "prettier" },
-		css = { "prettier" },
 		nix = { "alejandra" },
 	},
 	format_on_save = {
@@ -48,7 +41,7 @@ require("conform").setup({
 vim.cmd("hi Directory guibg=NONE")
 vim.cmd("hi SignColumn guibg=NONE")
 vim.api.nvim_set_hl(0, "LineNr", { bg = "none" })
-vim.cmd.colorscheme("rose-pine")
+vim.cmd.colorscheme("gruber-darker")
 vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
 vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
 
@@ -115,7 +108,7 @@ local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-local servers = { "basedpyright", "lua_ls", "clangd", "rust_analyzer", "ts_ls", "html", "cssls", "nil_ls" }
+local servers = { "basedpyright", "lua_ls", "clangd","nil_ls" }
 
 for _, server in ipairs(servers) do
 	vim.lsp.config(server, {
