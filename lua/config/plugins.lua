@@ -17,12 +17,23 @@ vim.pack.add(github({
 	"rafamadriz/friendly-snippets",
 	"saadparwaiz1/cmp_luasnip",
 	"brenoprata10/nvim-highlight-colors",
+	"m4xshen/autoclose.nvim",
 	"nvim-telescope/telescope.nvim",
 	"nvim-lua/plenary.nvim",
 	"stevearc/oil.nvim",
 	"nvim-tree/nvim-web-devicons",
 	"blazkowolf/gruber-darker.nvim",
 }))
+
+vim.cmd("hi Directory guibg=NONE")
+vim.cmd("hi SignColumn guibg=NONE")
+vim.api.nvim_set_hl(0, "LineNr", { bg = "none" })
+vim.cmd.colorscheme("gruber-darker")
+vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+
+require("nvim-highlight-colors").setup({})
+require("autoclose").setup()
 
 require("conform").setup({
 	formatters_by_ft = {
@@ -38,13 +49,6 @@ require("conform").setup({
 	},
 })
 
-vim.cmd("hi Directory guibg=NONE")
-vim.cmd("hi SignColumn guibg=NONE")
-vim.api.nvim_set_hl(0, "LineNr", { bg = "none" })
-vim.cmd.colorscheme("gruber-darker")
-vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
-
 require("oil").setup({
 	view_options = {
 		show_hidden = true,
@@ -56,7 +60,6 @@ require("oil").setup({
 		end,
 	},
 })
-require("nvim-highlight-colors").setup({})
 
 local cmp = require("cmp")
 local luasnip = require("luasnip")
@@ -108,7 +111,7 @@ local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-local servers = { "basedpyright", "lua_ls", "clangd","nil_ls" }
+local servers = { "basedpyright", "lua_ls", "clangd", "nil_ls" }
 
 for _, server in ipairs(servers) do
 	vim.lsp.config(server, {
