@@ -8,29 +8,28 @@ end
 
 vim.pack.add(github({
 	"neovim/nvim-lspconfig",
-	"stevearc/conform.nvim",
 	"hrsh7th/nvim-cmp",
 	"hrsh7th/cmp-path",
 	"hrsh7th/cmp-buffer",
 	"hrsh7th/cmp-nvim-lsp",
 	"L3MON4D3/LuaSnip",
-	"rafamadriz/friendly-snippets",
 	"saadparwaiz1/cmp_luasnip",
+	"rafamadriz/friendly-snippets",
+	"stevearc/conform.nvim",
 	"brenoprata10/nvim-highlight-colors",
 	"m4xshen/autoclose.nvim",
 	"nvim-telescope/telescope.nvim",
 	"nvim-lua/plenary.nvim",
 	"stevearc/oil.nvim",
 	"nvim-tree/nvim-web-devicons",
-	"blazkowolf/gruber-darker.nvim",
+	"ellisonleao/gruvbox.nvim",
 }))
 
-vim.cmd("hi Directory guibg=NONE")
-vim.cmd("hi SignColumn guibg=NONE")
-vim.api.nvim_set_hl(0, "LineNr", { bg = "none" })
-vim.cmd.colorscheme("gruber-darker")
-vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+require("gruvbox").setup({
+	contrast = "hard",
+	transparent_mode = true,
+})
+vim.cmd.colorscheme("gruvbox")
 
 require("nvim-highlight-colors").setup({})
 require("autoclose").setup()

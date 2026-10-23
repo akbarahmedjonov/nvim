@@ -1,6 +1,6 @@
 {
   "plugins": {
-    "LuaSnip": {
+   "LuaSnip": {
       "rev": "0abc8f390b278c3b4aabc4c004ac8a088b65cf24",
       "src": "https://github.com/L3MON4D3/LuaSnip"
     },
@@ -40,13 +40,9 @@
       "rev": "a5a73e586521fe5c12d751ad81a0db67649a94ed",
       "src": "https://github.com/rafamadriz/friendly-snippets"
     },
-    "gruber-darker.nvim": {
-      "rev": "35cb97959ef01f7193c94c404c13ddb3d4346654",
-      "src": "https://github.com/blazkowolf/gruber-darker.nvim"
-    },
-    "nvim": {
-      "rev": "edefef779ab08ce1a4a404713e3012b0d202bd35",
-      "src": "https://github.com/catppuccin/nvim"
+    "gruvbox.nvim": {
+      "rev": "154eb5ff5b96d0641307113fa385eaf0d36d9796",
+      "src": "https://github.com/ellisonleao/gruvbox.nvim"
     },
     "nvim-cmp": {
       "rev": "2ffe79f1f021def8dd1fcd81deb16f1bb0d989f3",

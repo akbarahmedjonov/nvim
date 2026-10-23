@@ -1,13 +1,12 @@
-# ⚡ Neovim Setup
+# ⚡ Akbar's Neovim Setup
 
-A high-performance, minimalist Neovim configuration built with native package management and modern language server integrations.
+A hella fast neovim config brought to you by Akbar
 
 ---
 
 ## 🚀 One-Line Installation
 
-Select the command corresponding to your Linux distribution:
-
+Only for Arch Linux(sorry):
 ### Arch Linux
 ```bash
 curl -sSL https://raw.githubusercontent.com/akbarahmedjonov/scripts/main/nvim.sh | bash
