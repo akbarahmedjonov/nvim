@@ -8,6 +8,7 @@ opt.ignorecase = true
 opt.smartcase = true
 opt.splitright = true
 opt.splitbelow = true
+opt.signcolumn = "yes"
 opt.scrolloff = 8
 opt.swapfile = false
 opt.wrap = true
