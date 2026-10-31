@@ -41,6 +41,7 @@ require("conform").setup({
 		cpp = { "clang_format" },
 		lua = { "stylua" },
 		nix = { "alejandra" },
+		go = { "gofmt" },
 	},
 	format_on_save = {
 		timeout_ms = 500,
@@ -110,7 +111,7 @@ local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-local servers = { "basedpyright", "lua_ls", "clangd", "nil_ls" }
+local servers = { "basedpyright", "lua_ls", "clangd", "gopls", "nil_ls" }
 
 for _, server in ipairs(servers) do
 	vim.lsp.config(server, {
